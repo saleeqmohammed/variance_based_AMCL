@@ -276,6 +276,7 @@ class PFLocaliserBase(object):
         """ Set the map for localisation """
         self.occupancy_map = occupancy_map
         self.sensor_model.set_map(occupancy_map)
+        #rospy.loginfo("Map received. %d X %d, %f px/m." %(occupancy_map.info.width, occupancy_map.info.height, occupancy_map.info.resolution))
         # ----- Map has changed, so we should reinitialise the particle cloud
         rospy.loginfo("Particle filter got map. (Re)initialising.")
         self.particlecloud = self.initialise_particle_cloud(self.estimatedpose)

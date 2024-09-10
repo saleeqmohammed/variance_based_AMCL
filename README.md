@@ -1,14 +1,8 @@
-# PF Localisation Package (Skeleton Code)
+# PF Localisation Package
 
 ## Particle Filter Exercise
 
-This package implements the particle filter localisation using sensor and motion update from the Pioneer P3-DX robot. The methods in `src/pf_localisation/pf.py` have to be completed correctly to run the node. Read the assignment lab notes for more instructions on how to complete these methods. You can also find documentation regarding each method in the source files.
-
-#### Note:
-
-* You need to make changes **ONLY** in `pf.py` file for completing the localisation package. If you want to change any of the inherited parameters (parameters inherited from the parent class `PFLocaliserBase`), it is best to do so from the child class itself (i.e. in `PFLocaliser` class in `pf.py`).
-
-* However, you may play with different values for parameters in the other files (eg. `sensor_model.py`) for conducting experiments.
+This package implements the particle filter localisation using sensor and motion update from the Pioneer P3-DX robot. You can also find documentation regarding each method in the source files.
 
 
 ### Building Package:
@@ -60,9 +54,3 @@ Running the node successfully will publish the following topics:
 
 All of these can be visualised in RViz by adding the appropriate Views.
 
-
-### Advice:
-
-* Once you have a basic understanding of what you have to do in the `PFLocaliser` class of `pf.py` file, it is a good idea to look at its parent class `PFLocaliserBase` in `pf_base.py` to see how the other parts of the localisation algorithm is implemented. 
-* You may also go through `sensor_model.py` to see how the sensor model is coded, and how the model update is implemented. The different parameter values that were empirically chosen can also be found here. 
-* Read through `node.py` to understand how the node is impelemented to perform the update whenever new information is available. You can also see how `rospy logging` is used for logging useful information to console. You may also use this for debugging purposes.
