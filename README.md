@@ -1,13 +1,29 @@
-# PF Localisation Package
+# Variance based Adaptive Monte Carlo Localisation
+This projects presennts an implementation of a variance-based adaptive particle filter localization algorithm(VAMCL). Equipped with a systematic re-sampling method based on the laser-scan data stream, correcting the belief distribution. A Density-based clustering (DBscan)and weighted averaging is used to estimate a robot’s state variables. 
+The results are then compared with the adaptive Monte-Carlo filter in the ROS(noetic) package, including tests for edge cases such as the ’kidnap robot’ problem
 
-## Particle Filter Exercise
+## Varianc based particle adaptation
 
-This package implements the particle filter localisation using sensor and motion update from the Pioneer P3-DX robot. You can also find documentation regarding each method in the source files.
+The particle population was altered based on variance in error of a 6-dimensional pos-vector. more details in the [report](https://drive.google.com/file/d/1lUWaYRXgXfchTuDHWAW5DvLWny498ybV/view?usp=sharing).
 
+![](images/modellingPointClouds.png)
 
-### Building Package:
+<i>Figure showing the adaptation of particle population (orange) and dopping points (gray) according to a Logarithmic fit(green) of error variance in prediction</i>
 
-* Move package to your catkin workspace (`src` directory)
+## Performance comparision
+### Scenario: Differential drive robot normal movement
+![](images/Localisation_images_1.png)
+_Figure showing algorithm preformace against build in ros-noetic AMCL package in regular localisation scenario VAMCL(red) and AMCL(blue)_
+
+## Scenario: Kidnap robot problem
+![](images/Localisation_images_2.png)
+_Figure showing algorithm preformace against build in ros-noetic AMCL package in kidnapped robot (offline transportation of robot) situation for VAMCL(red) and AMCL(blue)_
+
+### Building the Package:
+ 
+* This package is written for ROS1 noetic.
+
+* Rename the repository to `src` after moving to your catkin workspace (`src` directory)
 * Rebuild catkin workspace 
         
         catkin_make    # ----- run from root directory of catkin workspace
@@ -54,3 +70,4 @@ Running the node successfully will publish the following topics:
 
 All of these can be visualised in RViz by adding the appropriate Views.
 
+This project is built on top of the [pf_localisation](https://github.com/IRUOB/pf_localisation) github repository.
